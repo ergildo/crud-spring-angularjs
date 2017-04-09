@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+    <link rel="stylesheet" href="lib/css/bootstrap.css">
+    <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.css">
+
+    <script src="lib/js/jquery.js"></script>
+    <script src="lib/js/angular.js"></script>
+    <script src="lib/js/bootstrap.js"></script>
+    <script src="app/config/app.config.js"></script>
+    <script src="app/controller/pessoa.controller.js"></script>
+
+
+</head>
+<body ng-app="app">
+
+<div ng-controller="pessoaController" class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <i class="fa fa-edit"></i> Crud Spring e AngularJS
+        </div>
+        <div class="panel panel-success">
+            <div class="panel-body">
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Nome</label>
+                            <input ng-model="pessoa.nome" type="text" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Idade</label>
+                            <input ng-model="pessoa.idade" type="number" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input ng-model="pessoa.email" type="email" class="form-control">
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="panel-footer">
+
+                    <button class="btn btn-primary navbar-btn"
+                            ng-click="salvar()">
+                        <i class="fa fa-floppy-o"></i>
+                        Salvar
+                    </button>
+
+                    <button class="btn btn-warning navbar-btn"
+                            ng-click="limpar()">
+                        <i class="fa fa-eraser"></i>
+                        Limpar
+                    </button>
+                </div>
+            </div>
+
+        </div>
+        <table ng-show="pessoas.length >0" class="table table-hover">
+            <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Idade</th>
+                <th>Email</th>
+                <th>#</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="pessoa in pessoas track by $index">
+                <td>{{pessoa.nome}}</td>
+                <td>{{pessoa.idade}}</td>
+                <td>{{pessoa.email}}</td>
+                <td ng-click="editar(pessoa)"><i class="fa fa-edit"></i></td>
+                <td ng-click="excluir(pessoa.id)"><i class="fa fa-trash"></i></td>
+            </tr>
+
+        </table>
+    </div>
+</div>
+</body>
+</html>
